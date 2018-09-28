@@ -1,0 +1,18 @@
+os:
+- linux
+- osx
+language: generic
+node_js:
+- node
+cache:
+  directories:
+  - "$HOME/.npm"
+before_install:
+- cd javascript && npm install -g npm@latest
+install:
+- cd javascript && npm ci
+
+# Use a Build Matrix for subdirs (https://lord.io/blog/2014/travis-multiple-subdirs/)
+env:
+- DIR=javascript
+script: cd $DIR # test
